@@ -10,5 +10,4 @@ public class CharityBoxesApplication {
 		SpringApplication.run(CharityBoxesApplication.class, args);
 
 	}
-
 }

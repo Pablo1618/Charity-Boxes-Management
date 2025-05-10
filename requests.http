@@ -1,0 +1,33 @@
+### Create fundraising event
+POST http://localhost:8080/api/fundraising-events
+Content-Type: application/json
+
+{
+  "name": "Caritas",
+  "amount": 1500.00,
+  "currency": "PLN"
+}
+
+###
+POST http://localhost:8080/api/fundraising-events
+Content-Type: application/json
+
+{
+  "name": "WOSP",
+  "amount": 3000.50,
+  "currency": "PLN"
+}
+###
+POST http://localhost:8080/api/fundraising-events
+Content-Type: application/json
+
+{
+  "name": "PCK",
+  "amount": 1800.00,
+  "currency": "PLN"
+}
+
+### Show list of all fundraising events
+GET http://localhost:8080/api/fundraising-events
+Accept: application/json
+
