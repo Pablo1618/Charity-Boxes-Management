@@ -22,9 +22,14 @@ public class BoxService {
     }
 
     public List<String> getAllBoxes() {
-        List<Box> events = boxRepository.findAll();
-        System.out.println("All events: " + events);
-        return events.stream().map(Box::getName).collect(Collectors.toList());
+        List<Box> boxes = boxRepository.findAll();
+
+        return boxes.stream().map(box -> {
+            String name = box.getName();
+            boolean assigned = box.getFundraisingEvent() != null;
+            boolean empty = box.getAmount() == null || box.getAmount().compareTo(BigDecimal.ZERO) == 0;
+            return String.format("Name: %s Assigned: %s Empty: %s", name, assigned, empty);
+        }).collect(Collectors.toList());
     }
 
     public Box assignBoxToFundraisingEvent(String boxName, String eventName) {
