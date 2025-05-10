@@ -1,6 +1,7 @@
 package pablo.charity_boxes.fundraising_event;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -20,5 +21,12 @@ public class FundraisingEventController {
     public List<String> getAllFundraisingEvents() {
         return service.getAllFundraisingEvents();
     }
+
+    @GetMapping("/report")
+    public List<String> getFundraisingReport() {
+        return service.getFundraisingReport();
+    }
+
+
 }
 

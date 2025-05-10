@@ -19,8 +19,8 @@ public class Box {
     private String name;
     private BigDecimal amount;
 
-//    @ManyToOne
-//    @JoinColumn(name = "fundraising_event_id", nullable = false)
-//    private FundraisingEvent fundraisingEvent;
+    @ManyToOne
+    @JoinColumn(name = "fundraising_event_id")
+    private FundraisingEvent fundraisingEvent;
 
 }
