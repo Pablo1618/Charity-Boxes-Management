@@ -1,6 +1,8 @@
 package pablo.charity_boxes.box;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pablo.charity_boxes.Currency;
 import java.math.BigDecimal;
@@ -14,8 +16,9 @@ public class BoxController {
     private BoxService service;
 
     @PostMapping
-    public Box createFundraisingEvent(@RequestBody Box event) {
-        return service.createBox(event);
+    public ResponseEntity<String> createFundraisingEvent(@RequestBody Box event) {
+        service.createBox(event);
+        return ResponseEntity.ok("Box created successfully");
     }
 
     @GetMapping
@@ -24,18 +27,21 @@ public class BoxController {
     }
 
     @PutMapping("/assign")
-    public Box assignBoxToFundraisingEvent(@RequestParam String boxName, @RequestParam String eventName) {
-        return service.assignBoxToFundraisingEvent(boxName, eventName);
+    public ResponseEntity<String> assignBoxToFundraisingEvent(@RequestParam String boxName, @RequestParam String eventName) {
+        service.assignBoxToFundraisingEvent(boxName, eventName);
+        return ResponseEntity.ok("Box assigned successfully");
     }
 
     @PutMapping("/add-money")
-    public Box addMoneyToBox(@RequestParam String boxName, @RequestParam BigDecimal amount, @RequestParam Currency currency) {
-        return service.addMoneyToBox(boxName, amount, currency);
+    public ResponseEntity<String> addMoneyToBox(@RequestParam String boxName, @RequestParam BigDecimal amount, @RequestParam Currency currency) {
+        service.addMoneyToBox(boxName, amount, currency);
+        return ResponseEntity.ok("Money added successfully");
     }
 
     @PutMapping("/empty")
-    public Box emptyBox(@RequestParam String boxName) {
-        return service.emptyBox(boxName);
+    public ResponseEntity<String> emptyBox(@RequestParam String boxName) {
+        service.emptyBox(boxName);
+        return ResponseEntity.ok("Box emptied successfully");
     }
 
 

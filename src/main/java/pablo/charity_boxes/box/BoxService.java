@@ -20,8 +20,14 @@ public class BoxService {
     @Autowired
     private FundraisingEventRepository fundraisingEventRepository;
 
-    public Box createBox(Box event) {
-        return boxRepository.save(event);
+    public Box createBox(Box box) {
+
+        Optional<Box> existingBox = boxRepository.findByName(box.getName());
+        if (existingBox.isPresent()) {
+            throw new IllegalStateException("Box with this name already exists");
+        }
+
+        return boxRepository.save(box);
     }
 
     public List<String> getAllBoxes() {
@@ -45,6 +51,12 @@ public class BoxService {
             throw new RuntimeException("Box not found");
         }
         Box box = boxOptional.get();
+
+        boolean isEmpty = box.getAmounts() == null || box.getAmounts().values().stream()
+                .allMatch(amount -> amount == null || amount.compareTo(BigDecimal.ZERO) == 0);
+        if (!isEmpty) {
+            throw new IllegalStateException("Box is not empty");
+        }
 
         Optional<FundraisingEvent> fundraisingEventOptional = fundraisingEventRepository.findByName(eventName);
         if (fundraisingEventOptional.isEmpty()) {

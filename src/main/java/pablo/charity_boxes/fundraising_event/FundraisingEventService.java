@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pablo.charity_boxes.Currency;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -14,13 +15,12 @@ public class FundraisingEventService {
     private FundraisingEventRepository repository;
 
     public FundraisingEvent createFundraisingEvent(FundraisingEvent event) {
-        return repository.save(event);
-    }
+        Optional<FundraisingEvent> existingEvent = repository.findByName(event.getName());
+        if (existingEvent.isPresent()) {
+            throw new IllegalStateException("Fundraising event with this name already exists");
+        }
 
-    public List<String> getAllFundraisingEvents() {
-        List<FundraisingEvent> events = repository.findAll();
-        System.out.println("All events: " + events);
-        return events.stream().map(FundraisingEvent::getName).collect(Collectors.toList());
+        return repository.save(event);
     }
 
     public List<String> getFundraisingReport() {

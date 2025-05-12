@@ -29,7 +29,4 @@ Content-Type: application/json
 GET http://localhost:8080/api/fundraising-events/report
 Accept: application/json
 
-### Show list of all fundraising events
-GET http://localhost:8080/api/fundraising-events
-
 
