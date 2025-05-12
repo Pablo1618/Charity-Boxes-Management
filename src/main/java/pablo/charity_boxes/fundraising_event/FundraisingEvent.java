@@ -3,8 +3,8 @@ package pablo.charity_boxes.fundraising_event;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import pablo.charity_boxes.Currency;
 import pablo.charity_boxes.box.Box;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,8 @@ public class FundraisingEvent {
     private Long id;
 
     private String name;
-    private BigDecimal amount;
-    private String currency;
+    private BigDecimal amount = BigDecimal.ZERO;
+    private Currency currency;
 
     @OneToMany(mappedBy = "fundraisingEvent", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JsonIgnore

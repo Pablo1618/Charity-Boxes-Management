@@ -1,0 +1,57 @@
+### Create box
+POST http://localhost:8080/api/boxes
+Content-Type: application/json
+
+{
+  "name": "box1"
+}
+
+###
+POST http://localhost:8080/api/boxes
+Content-Type: application/json
+
+{
+  "name": "box2"
+}
+
+###
+POST http://localhost:8080/api/boxes
+Content-Type: application/json
+
+{
+  "name": "box3"
+}
+
+### Show list of all boxes
+GET http://localhost:8080/api/boxes
+
+### Add money to box1
+PUT http://localhost:8080/api/boxes/add-money?boxName=box1&amount=100.00&currency=PLN
+###
+PUT http://localhost:8080/api/boxes/add-money?boxName=box1&amount=150.00&currency=EUR
+###
+PUT http://localhost:8080/api/boxes/add-money?boxName=box1&amount=20.00&currency=USD
+
+### Add money to box2
+PUT http://localhost:8080/api/boxes/add-money?boxName=box2&amount=50.00&currency=PLN
+###
+PUT http://localhost:8080/api/boxes/add-money?boxName=box2&amount=100.00&currency=EUR
+###
+PUT http://localhost:8080/api/boxes/add-money?boxName=box2&amount=30.00&currency=USD
+
+### Add money to box3
+PUT http://localhost:8080/api/boxes/add-money?boxName=box3&amount=80.00&currency=PLN
+###
+PUT http://localhost:8080/api/boxes/add-money?boxName=box3&amount=70.00&currency=EUR
+###
+PUT http://localhost:8080/api/boxes/add-money?boxName=box3&amount=50.00&currency=USD
+
+### Assing charity box to fundraising event
+PUT http://localhost:8080/api/boxes/assign?boxName=box1&eventName=Caritas
+###
+PUT http://localhost:8080/api/boxes/assign?boxName=box2&eventName=WOSP
+###
+PUT http://localhost:8080/api/boxes/assign?boxName=box3&eventName=WOSP
+
+### Empty box1
+PUT http://localhost:8080/api/boxes/empty?boxName=box1

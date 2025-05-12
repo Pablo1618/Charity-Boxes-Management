@@ -2,7 +2,7 @@ package pablo.charity_boxes.box;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import pablo.charity_boxes.Currency;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -29,8 +29,13 @@ public class BoxController {
     }
 
     @PutMapping("/add-money")
-    public Box addMoneyToBox(@RequestParam String boxName, @RequestParam BigDecimal amount) {
-        return service.addMoneyToBox(boxName, amount);
+    public Box addMoneyToBox(@RequestParam String boxName, @RequestParam BigDecimal amount, @RequestParam Currency currency) {
+        return service.addMoneyToBox(boxName, amount, currency);
+    }
+
+    @PutMapping("/empty")
+    public Box emptyBox(@RequestParam String boxName) {
+        return service.emptyBox(boxName);
     }
 
 
