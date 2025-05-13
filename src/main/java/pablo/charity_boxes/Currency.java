@@ -32,4 +32,8 @@ public enum Currency {
     public static BigDecimal getExchangeRate(Currency from, Currency to) {
         return exchangeRates.get(from).get(to);
     }
+
+    public static boolean currencyExists(Currency currency) {
+        return exchangeRates.containsKey(currency);
+    }
 }

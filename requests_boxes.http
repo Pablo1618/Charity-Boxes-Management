@@ -25,6 +25,13 @@ Content-Type: application/json
 ### Show list of all boxes
 GET http://localhost:8080/api/boxes
 
+### Assing charity box to fundraising event
+PUT http://localhost:8080/api/boxes/assign?boxName=box1&eventName=Caritas
+###
+PUT http://localhost:8080/api/boxes/assign?boxName=box2&eventName=WOSP
+###
+PUT http://localhost:8080/api/boxes/assign?boxName=box3&eventName=WOSP
+
 ### Add money to box1
 PUT http://localhost:8080/api/boxes/add-money?boxName=box1&amount=100.00&currency=PLN
 ###
@@ -46,12 +53,16 @@ PUT http://localhost:8080/api/boxes/add-money?boxName=box3&amount=70.00&currency
 ###
 PUT http://localhost:8080/api/boxes/add-money?boxName=box3&amount=50.00&currency=USD
 
-### Assing charity box to fundraising event
-PUT http://localhost:8080/api/boxes/assign?boxName=box1&eventName=Caritas
-###
-PUT http://localhost:8080/api/boxes/assign?boxName=box2&eventName=WOSP
-###
-PUT http://localhost:8080/api/boxes/assign?boxName=box3&eventName=WOSP
-
 ### Empty box1
 PUT http://localhost:8080/api/boxes/empty?boxName=box1
+### Empty box2
+PUT http://localhost:8080/api/boxes/empty?boxName=box2
+### Empty box3
+PUT http://localhost:8080/api/boxes/empty?boxName=box3
+
+### Remove box1
+DELETE http://localhost:8080/api/boxes/remove?boxName=box1
+### Remove box2
+DELETE http://localhost:8080/api/boxes/remove?boxName=box2
+### Remove box3
+DELETE http://localhost:8080/api/boxes/remove?boxName=box3

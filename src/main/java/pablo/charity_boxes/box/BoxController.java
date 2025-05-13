@@ -44,6 +44,12 @@ public class BoxController {
         return ResponseEntity.ok("Box emptied successfully");
     }
 
+    @DeleteMapping("/remove")
+    public ResponseEntity<String> removeBox(@RequestParam String boxName) {
+        service.removeBox(boxName);
+        return ResponseEntity.ok("Box removed successfully");
+    }
+
 
 }
 

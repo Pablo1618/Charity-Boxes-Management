@@ -48,7 +48,7 @@ public class BoxService {
 
         Optional<Box> boxOptional = boxRepository.findByName(boxName);
         if (boxOptional.isEmpty()) {
-            throw new RuntimeException("Box not found");
+            throw new RuntimeException("Box with this name doesn't exist");
         }
         Box box = boxOptional.get();
 
@@ -70,9 +70,17 @@ public class BoxService {
 
     public Box addMoneyToBox(String boxName, BigDecimal amount, Currency currency) {
 
+        if(!Currency.currencyExists(currency)){
+            throw new RuntimeException("This currency isn't supported");
+        }
+
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Amount must be a positive number");
+        }
+
         Optional<Box> boxOptional = boxRepository.findByName(boxName);
         if (boxOptional.isEmpty()) {
-            throw new RuntimeException("Box not found");
+            throw new RuntimeException("Box with this name doesn't exist");
         }
         Box box = boxOptional.get();
 
@@ -86,7 +94,7 @@ public class BoxService {
 
     @Transactional
     public Box emptyBox(String boxName) {
-        Box box = boxRepository.findByName(boxName).orElseThrow(() -> new RuntimeException("Box not found"));
+        Box box = boxRepository.findByName(boxName).orElseThrow(() -> new RuntimeException("Box with this name doesn't exist"));
 
         FundraisingEvent event = box.getFundraisingEvent();
         if (event == null) {
@@ -111,6 +119,20 @@ public class BoxService {
 
         return boxRepository.save(box);
     }
+
+    @Transactional
+    public void removeBox(String boxName) {
+        Box box = boxRepository.findByName(boxName).orElseThrow(() -> new RuntimeException("Box with this name doesn't exist"));
+
+        FundraisingEvent fundraisingEvent = box.getFundraisingEvent();
+        if (fundraisingEvent != null) {
+            fundraisingEvent.getBoxes().remove(box);
+            box.setFundraisingEvent(null);
+        }
+
+        boxRepository.delete(box);
+    }
+
 
 }
 
