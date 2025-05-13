@@ -22,8 +22,15 @@ Tested on Eclipse Temurin 17 JDK and REST Client VS Code Extension
 
 **Full test sample queries are located in file:**
 - **requests_test.http** - scenario of requests placed in order to test all functionalities of the application
+## 
 <img src="https://i.imgur.com/Cqe65V3.png" width="25%" height="auto"><br>
 <img src="https://i.imgur.com/87oPwUN.png" width="80%" height="auto">
+
+## If you encounter java: cannot find symbol Lombok IntelliJ error on compilation
+
+Go to Settings -> Compiler -> Annotation Processors
+
+<img src="https://i.imgur.com/zpKDe2v.png" width="80%" height="auto">
 
 ## REST API endpoints
 
