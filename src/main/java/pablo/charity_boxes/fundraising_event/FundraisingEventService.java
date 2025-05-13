@@ -2,7 +2,7 @@ package pablo.charity_boxes.fundraising_event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pablo.charity_boxes.Currency;
+import pablo.charity_boxes.common.Currency;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;

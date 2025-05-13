@@ -1,10 +1,9 @@
 package pablo.charity_boxes.box;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pablo.charity_boxes.Currency;
+import pablo.charity_boxes.common.Currency;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class BoxController {
     }
 
     @PutMapping("/add-money")
-    public ResponseEntity<String> addMoneyToBox(@RequestParam String boxName, @RequestParam BigDecimal amount, @RequestParam Currency currency) {
+    public ResponseEntity<String> addMoneyToBox(@RequestParam String boxName, @RequestParam BigDecimal amount, @RequestParam String currency) {
         service.addMoneyToBox(boxName, amount, currency);
         return ResponseEntity.ok("Money added successfully");
     }

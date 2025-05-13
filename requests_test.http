@@ -1,0 +1,62 @@
+### 1. Create fundraising event with PLN currency
+POST http://localhost:8080/api/fundraising-events
+Content-Type: application/json
+
+{"name": "Caritas", "currency": "PLN"}
+
+### 2. Create fundraising event with EUR currency
+POST http://localhost:8080/api/fundraising-events
+Content-Type: application/json
+
+{"name": "WOSP", "currency": "EUR"}
+
+### 3. Show financial report
+GET http://localhost:8080/api/fundraising-events/report
+
+### 4. Create box
+POST http://localhost:8080/api/boxes
+Content-Type: application/json
+
+{"name": "box1"}
+
+### 5. Assign box1 to Caritas
+PUT http://localhost:8080/api/boxes/assign?boxName=box1&eventName=Caritas
+
+### 5. Add PLN to box1
+PUT http://localhost:8080/api/boxes/add-money?boxName=box1&amount=100.00&currency=PLN
+
+### 6. Add EUR to box1
+PUT http://localhost:8080/api/boxes/add-money?boxName=box1&amount=150.00&currency=EUR
+
+### 7. Add USD to box1
+PUT http://localhost:8080/api/boxes/add-money?boxName=box1&amount=20.00&currency=USD
+
+### 8. Create another box
+POST http://localhost:8080/api/boxes
+Content-Type: application/json
+
+{"name": "box2"}
+
+### 9. Add PLN to box2
+PUT http://localhost:8080/api/boxes/add-money?boxName=box2&amount=500.00&currency=PLN
+
+### 10. Try to asign box2 to WOSP - error box is not empty
+PUT http://localhost:8080/api/boxes/assign?boxName=box2&eventName=WOSP
+
+### 11. Show list of all boxes
+GET http://localhost:8080/api/boxes
+
+### 12. Empty box1
+PUT http://localhost:8080/api/boxes/empty?boxName=box1
+
+### 13. Show financial report
+GET http://localhost:8080/api/fundraising-events/report
+
+### 14. Add PLN money to box1
+PUT http://localhost:8080/api/boxes/add-money?boxName=box1&amount=1000.00&currency=PLN
+
+### 15. Remove box1
+DELETE http://localhost:8080/api/boxes/remove?boxName=box1
+
+### 16. Show financial report
+GET http://localhost:8080/api/fundraising-events/report

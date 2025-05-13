@@ -1,4 +1,4 @@
-package pablo.charity_boxes;
+package pablo.charity_boxes.common;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -19,7 +19,6 @@ public class FundraisingEventController {
         return ResponseEntity.ok("Fundraising event created successfully");
     }
 
-
     @GetMapping("/report")
     public List<String> getFundraisingReport() {
         return service.getFundraisingReport();

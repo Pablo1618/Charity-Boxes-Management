@@ -2,7 +2,7 @@ package pablo.charity_boxes.box;
 
 import jakarta.persistence.*;
 import lombok.*;
-import pablo.charity_boxes.Currency;
+import pablo.charity_boxes.common.Currency;
 import pablo.charity_boxes.fundraising_event.FundraisingEvent;
 import java.math.BigDecimal;
 import java.util.HashMap;

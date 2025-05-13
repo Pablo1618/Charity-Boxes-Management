@@ -3,7 +3,7 @@ package pablo.charity_boxes.fundraising_event;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import pablo.charity_boxes.Currency;
+import pablo.charity_boxes.common.Currency;
 import pablo.charity_boxes.box.Box;
 import java.math.BigDecimal;
 import java.util.ArrayList;

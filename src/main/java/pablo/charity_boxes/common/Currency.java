@@ -1,4 +1,4 @@
-package pablo.charity_boxes;
+package pablo.charity_boxes.common;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

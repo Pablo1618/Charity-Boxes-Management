@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.Optional;
-import pablo.charity_boxes.Currency;
+import pablo.charity_boxes.common.Currency;
 
 @Service
 public class BoxService {
@@ -68,9 +68,12 @@ public class BoxService {
         return boxRepository.save(box);
     }
 
-    public Box addMoneyToBox(String boxName, BigDecimal amount, Currency currency) {
+    public Box addMoneyToBox(String boxName, BigDecimal amount, String currencyName) {
 
-        if(!Currency.currencyExists(currency)){
+        Currency currency;
+        try {
+            currency = Currency.valueOf(currencyName.toUpperCase());
+        } catch (IllegalArgumentException e) {
             throw new RuntimeException("This currency isn't supported");
         }
 
